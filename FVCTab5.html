@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+   
+   <head>
+      <title>Review Table</title>
+      <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+      
+      <!-- Bootstrap -->
+      <link href = "css/bootstrap.min.css" rel = "stylesheet">
+      
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      
+      <!--[if lt IE 9]>
+      <script src = "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src = "https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+
+      <!-- BEBAS NEUE EQUIVALENT FONT -->
+      <link href="https://fonts.googleapis.com/css?family=Oswald|Ubuntu" rel="stylesheet">
+      <style type="text/css">
+         /*th {
+            max-width: 30px;
+         }*/
+         @font-face{
+            font-family: 'Oswald', sans-serif;
+            font-family: 'Ubuntu', sans-serif;
+         }  
+         body{
+            font-family: 'Oswald';
+            background: #eee;
+         }
+         label{
+            vertical-align: middle;
+         }
+         .table {
+            margin-bottom: 0px;
+         }
+         td, th {
+            border: none !important;
+            font-family: 'Oswald';
+         }
+         .table>tbody>tr>th {
+            padding-top: 8px;
+            padding-bottom: 0px;
+            color: lightgray;
+            font-weight: normal;
+         }
+         .table>tbody>tr>td {
+            /*padding-top: 0px;*/
+            vertical-align: middle;
+         }
+         .table>tbody>tr>td>label {
+            font-size: 36px;
+            color: #777;
+         }
+         table.tableNumber>tbody>tr>td{
+            font-family: 'Ubuntu';
+         }
+         .dataContent {
+            font-family: 'Ubuntu'; 
+            margin:0px;
+         }
+         .dataContentSuccess {
+            color: green;
+            font-weight:bold; 
+         }
+         .dataContentDanger {
+            color: red;
+            font-weight:bold; 
+         }
+         .dataContentPost {
+            color: purple;
+            font-weight:bold; 
+         }
+         .btn {
+            color: white;
+            border-radius: 3px;
+         }
+         .btn:hover {
+            color: white;
+         }
+         .btnPost {
+            background-color: purple;
+         }
+         .btnPre {
+            background-color: #449d44;
+         }
+         /*button.btn.collapsed.hideButton:before
+         {
+             content:'+' ;
+         }
+         button.btn.hideButton:before
+         {
+             content:'-' ;
+         }          */
+         button.btn.collapsed.hideButton #hideSpan:before
+         {
+             content:'+';
+         }
+         button.btn.hideButton #hideSpan:before
+         {
+             content:'-' ;
+         }          
+         .btn-primary {
+            background: #1e8bef;
+            border: #1e8bef;
+            color: white;
+         }
+         .nav-tabs>li>a {
+            background: #1e8bef;
+            color: white;
+            margin-left: 20px;
+         }
+         .nav-tabs>li.active>a {
+            background: #eee;
+            color: gray;
+         }
+         .nav-tabs>li>a:hover {
+            background: #1e8bef;
+         }
+         .nav>li>a:hover {}
+      </style>
+   </head>
+   
+   <body style="width: 1024px;">
+      <!-- HEADER -->
+      <div style="width: 100%; background: #004878; height: 44px; padding-top: 5px;">
+         <div style="width: 100%; text-align: center;">
+            <button class="btn btn-link" style="color: white; font-family: 'Ubuntu'">John Doe | ID 0123456789</button>
+            <a href="#">
+               <img src="images/Edit2.png" style="width: 20px;">
+            </a>
+         </div>
+         <div style="float: right; margin-top: -34px; margin-right: 15px;" >
+            <p style="display: inline-block; color: white; margin-right: 15px; font-family: 'Ubuntu'">NHANES III</p>
+            <button class="btn btn-primary" style="font-size: medium;">CAL</button>
+            <button class="btn btn-primary" style="margin-left: 10px;">Settings</button>
+            <button class="btn btn-primary" style="font-size: medium; margin-left: 10px;">?</button>
+            <button class="btn btn-primary" style="font-size: medium; margin-left: 10px;">-></button>
+         </div>
+      </div>
+      <!-- TABS -->
+      <ul id="myTab" class="nav nav-tabs" style="margin-top: -41px; position: absolute;">
+         <li class="active">
+            <a href="#fvcTab" data-toggle="tab">
+               FVC
+            </a>
+         </li>
+         <li><a href="#trendTab" data-toggle="tab">TRENDING</a></li>         
+      </ul>
+      <!-- GRAPHS -->
+      <div class="tab-content">
+      <div class="tab-pane fade in active" id="fvcTab">
+         <div class="container" style="display: block; height: 768px; width: 479px; margin-left: 15px; margin-top: 15px; padding: 0;">
+                           <div class="panel panel-success" style="width: 100%;">
+                              <div class="panel-heading" style="background-color: gray; border-color: darkgray; color: white; font-size: 16px;">
+                                 <p style="margin: 0px; display: inline-block; width: 417px;">VOLUME VS TIME GRAPH</p>
+                                 <button class="btn btn-link hideButton" data-toggle="collapse" data-target="#volTimePanel" style="position: relative; padding-top: 21px; color: white; outline: transparent; margin-left: 0px; background: transparent;">
+                                    <span id="hideSpan" style="position: absolute; display: block; top: -24px; left: 0; font-size: 48px;"></span>
+                                 </button>
+                              </div>
+                              <div class="panel-body collapse in" style="padding: 0px" id="volTimePanel">
+                                 <img src="images/chart1.png" style="width: 100%;">
+                              </div>                  
+                           </div>
+                  
+                           <div class="panel panel-success" style="width: 479px;">
+                              <div class="panel-heading" style="background-color: gray; border-color: darkgray; color: white; font-size: 16px;">
+                                 <p style="margin: 0px; display: inline-block; width: 417px;">FLOW VOLUME LOOP</p>
+                                 <button class="btn btn-link hideButton" data-toggle="collapse" data-target="#flowVolPanel" style="position: relative; padding-top: 21px; color: white; outline: transparent; margin-left: 0px; background: transparent;">
+                                    <span id="hideSpan" style="position: absolute; display: block; top: -24px; left: 0; font-size: 48px;"></span>
+                                 </button>
+                              </div>
+                              <div class="panel-body collapse in" style="padding: 0px" id="flowVolPanel">
+                                 <!-- <img src="chart1.png" style="width: 448px;"> -->
+                                 <img src="images/chart2.png" style="width: 100%;">
+                              </div>                  
+                           </div>
+                        </div>      
+                        <div style="margin: 0; padding: 0; padding-bottom: 15px; top: 0; margin-left: 509px; margin-top: -768px;">
+                           <!-- PATIENT INFO PANEL -->
+                           <div class="panel panel-success" style="width: 502px; margin-left: 0px; margin-top: 0px; border-color: gray">
+                              <div class="panel-heading" style="background-color: gray; border-color: darkgray; color: white; font-size: 16px;">
+                                 <p style="margin: 0px; display: inline;">PATIENT INFO: 2/17/2013 08:15:06 AM</p>
+                                 <button class="btn btn-link hideButton" data-toggle="collapse" data-target="#myPanel" style="position: relative; padding-top: 21px; color: white; outline: transparent; margin-left: 214px; background: transparent;">
+                                    <span id="hideSpan" style="position: absolute; display: block; top: -24px; left: 0; font-size: 48px;"></span>
+                                 </button>
+                              </div>
+                              <div class="panel-body collapse in" style="padding: 0px" id="myPanel">
+                                 <!-- Panel -->
+                                 <table class="table">
+                                    <tr>
+                                       <th>Patient Name</th>
+                                       <th>Patient ID</th>
+                                       <th>DOB</th>
+                                       <th>Sex</th>
+                                    </tr>
+                                    <tr>
+                                       <td>John Doe</td>
+                                       <td>0123456789</td>
+                                       <td>08/08/1988</td>
+                                       <td>Male</td>
+                                    </tr>
+                                    <tr>
+                                       <th>Height</th>
+                                       <th>Race</th>
+                                       <th>Smoker</th>
+                                       <th>Smoking History</th>
+                                    </tr>
+                                    <tr>
+                                       <td>68</td>
+                                       <td>Caucasian</td>
+                                       <td>Former Quit 4 yrs ago</td>
+                                       <td>2 cigs/day for 7 yrs</td>
+                                    </tr>
+                                 </table> 
+                              </div>      
+                           </div>
+                           <!--Effort data Table -->
+                           <div class="panel panel-success" style="width: 502px; margin-left: 0px; margin-top: 20px; border-color: gray">
+                              <div class="panel-heading" style="padding: 0px; background-color: gray; border-color: darkgray;">
+                              <!-- REPLACEMENT -->
+                                 <div style="color: white; height: 50px;">
+                                    <div style="margin: 0px 15px;">
+                                       <p style="display: inline-block; vertical-align: middle; margin: 0; font-size: 16px;">EFFORT DATA</p>
+                                       <p style="display: inline-block; vertical-align: middle; margin: 0; font-family: 'Ubuntu'; margin-left: 102px;">Filter Efforts</p>
+                                       <div class="btn-group" style="margin-left: 10px;">
+                                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="font-family: 'Ubuntu';">
+                                             Best
+                                             <span class="caret"></span>
+                                          </button>
+                                          <ul class="dropdown-menu" role="menu">
+                                             <li style="font-family: 'Ubuntu';"><a href="#">All</a></li>
+                                             <li style="font-family: 'Ubuntu';"><a href="#">Best</a></li>
+                                             <li style="font-family: 'Ubuntu';"><a href="#">Pre</a></li>
+                                             <li style="font-family: 'Ubuntu';"><a href="#">Post</a></li>            
+                                          </ul>
+                                       </div>
+                                       <button type="button" class="btn btn-primary navbar-btn" style="margin-left: 40px;">MORE DATA</button>
+                                    </div>   
+                                 </div>
+                              </div>
+                              <div class="panel-body" style="padding: 0px">
+                                 <!-- Panel -->
+                                 <div style="width: 500px; margin-bottom: 0px">
+                                    <div class="panel-heading" style="background-color: darkgray; border-radius: 0px;">
+                                       <table style="width: 500px; color: white;">
+                                          <tbody>
+                                             <tr>
+                                             <td style="width: 150px; font-size: large;">PRE</td>
+                                             <td style="width: 50px;">FVC</td>
+                                             <td style="width: 48px;">FEV1</td>
+                                             <td style="width: 50px; font-size: x-small;">FEV1/FVC</td>
+                                             <td style="width: 54px; font-size: x-small;">FEF 25-75</td>
+                                             <td style="width: 45px;">PEF</td>
+                                             <td>NOTE</td>
+                                          </tr>   
+                                          </tbody>               
+                                       </table>
+                                    </div>
+                                    <!-- PRE Table -->
+                                    <div>
+                                       <table class = "table table-hover" style="width: 500px;">
+                                       <!-- <caption>Contextual Table Layout</caption> -->                  
+                                          <thead style="background: lightgray">
+                                             <tr>
+                                                <!-- <th style="vertical-align: top; font-family: 'Ubuntu'">Predicted LLN</th> -->
+                                                <th>
+                                                   <table class="tableNumber">                     
+                                                      <tr><td>Predicted</td></tr><tr><td>LLN</td></tr>
+                                                   </table>
+                                                </th>
+                                                <th>
+                                                   <table class="tableNumber">                     
+                                                      <tr><td>3.34</td></tr><tr><td>3.05</td></tr>
+                                                   </table>
+                                                </th>
+                                                <th>
+                                                   <table class="tableNumber">                     
+                                                      <tr><td>2.85</td></tr><tr><td>2.69</td></tr>
+                                                   </table>
+                                                </th>
+                                                <th>
+                                                   <table class="tableNumber">                     
+                                                      <tr><td>86%</td></tr><tr><td>74%</td></tr>
+                                                   </table>
+                                                </th>
+                                                <th>
+                                                   <table class="tableNumber">                     
+                                                      <tr><td>3.32</td></tr><tr><td>2.14</td></tr>
+                                                   </table>
+                                                </th>
+                                                <th>
+                                                   <table class="tableNumber">                     
+                                                      <tr><td>7.03</td></tr><tr><td>5.50</td></tr>
+                                                   </table>
+                                                </th>
+                                                <th></th>
+                                                <th></th>                  
+                                             </tr>
+                                          </thead>
+                                       
+                                          <tbody>      
+                                             <tr>
+                                                <td><label>2</label><button class="btn active btn-lg exPre" style="margin-left: 10px">EX</button><button class="btn btnPre active btn-lg inPre" style="margin-left: 10px">IN</button></td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent">3.20</p></td></tr><tr><td><p class="dataContent">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent dataContentSuccess">2.62*</p></td></tr><tr><td><p class="dataContent dataContentSuccess">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent">82%</p></td></tr><tr><td><p class="dataContent">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent">2.67</p></td></tr><tr><td><p class="dataContent">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent">6.05</p></td></tr><tr><td><p class="dataContent">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td></td>
+                                                <td><img src="images/cross-24-512.png" width="30px"></td>
+                                             </tr>
+                                             <tr>
+                                                <td><label>3</label><button class="btn btnPre active btn-lg exPre" style="margin-left: 10px">EX</button><button class="btn active btn-lg inPre" style="margin-left: 10px">IN</button></td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent dataContentSuccess">3.35*</p></td></tr><tr><td><p class="dataContent dataContentSuccess">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent">2.62</p></td></tr><tr><td><p class="dataContent">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent">78%</p></td></tr><tr><td><p class="dataContent">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent">2.34</p></td></tr><tr><td><p class="dataContent">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent">6.00</p></td></tr><tr><td><p class="dataContent">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td style="width: 30px;"><img src="images/notepad-icon-31.png" width="30px"></td>
+                                                <td><img src="images/cross-24-512.png" width="30px"></td>
+                                             </tr>                        
+                                          </tbody>            
+                                       </table>
+                                    </div>   
+                                    <div class="panel-heading" style="background-color: darkgray; border-radius: 0px;">
+                                       <table style="width: 500px; color: white;">
+                                          <tbody>
+                                             <tr>
+                                             <td style="width: 150px; font-size: large;">POST</td>
+                                             <td style="width: 50px;">FVC</td>
+                                             <td style="width: 48px;">FEV1</td>
+                                             <td style="width: 50px; font-size: x-small;">FEV1/FVC</td>
+                                             <td style="width: 54px; font-size: x-small;">FEF 25-75</td>
+                                             <td style="width: 45px;">PEF</td>
+                                             <td>NOTE</td>
+                                          </tr>   
+                                          </tbody>               
+                                       </table>
+                                    </div>
+                                    <!-- POST Table -->
+                                    <div >
+                                       <table class = "table table-hover" style="width: 500px;">
+                                       <!-- <caption>Contextual Table Layout</caption> -->                  
+                                          <tbody>                        
+                                             <tr>
+                                                <td><label>1</label><button class="btn btnPost active btn-lg exPost" style="margin-left: 10px">EX</button><button class="btn active btn-lg inPost" style="margin-left: 10px">IN</button></td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent dataContentPost">3.24*</p></td></tr><tr><td><p class="dataContent dataContentPost">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent">2.60</p></td></tr><tr><td><p class="dataContent">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent">81%</p></td></tr><tr><td><p class="dataContent">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent">2.40</p></td></tr><tr><td><p class="dataContent">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent">6.15</p></td></tr><tr><td><p class="dataContent">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td></td>
+                                                <td><img src="images/cross-24-512.png" width="30px"></td>
+                                             </tr>
+                                             <tr>
+                                                <td><label>4</label><button class="btn active btn-lg exPost" style="margin-left: 10px">EX</button><button class="btn btnPost active btn-lg inPost" style="margin-left: 10px">IN</button></td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent">3.24*</p></td></tr><tr><td><p class="dataContent">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent dataContentPost">2.63*</p></td></tr><tr><td><p class="dataContent dataContentPost">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent">81%</p></td></tr><tr><td><p class="dataContent">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent dataContentDanger">2.10</p></td></tr><tr><td><p class="dataContent dataContentDanger">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td>
+                                                   <table>                     
+                                                      <tr><td><p class="dataContent">6.15</p></td></tr><tr><td><p class="dataContent">93%</p></td></tr>
+                                                   </table>
+                                                </td>
+                                                <td style="width: 30px;"><img src="images/notepad-icon-31.png" width="30px"></td>
+                                                <td><img src="images/cross-24-512.png" width="30px"></td>
+                                             </tr>                        
+                                          </tbody>            
+                                       </table>
+                                    </div> 
+                                    <div class="panel-heading" style="background-color: lightgray; border-radius: 0px;">
+                                       <table style="width: 500px; font-family: 'Ubuntu';">
+                                          <tbody>
+                                             <tr>
+                                             <td style="width: 148px; font-size: large; font-family: 'Ubuntu'">% Change</td>
+                                             <td style="width: 54px; font-family: 'Ubuntu';">12.2%</td>
+                                             <td style="width: 52px; font-family: 'Ubuntu';">14.1%</td>
+                                             <td style="width: 48px; font-family: 'Ubuntu';">13.3%</td>
+                                             <td style="width: 46px; font-family: 'Ubuntu';">12.5%</td>
+                                             <td style="width: 45px; font-family: 'Ubuntu';">15.2%</td>
+                                             <td></td>
+                                             <td></td>
+                                          </tr>   
+                                          </tbody>               
+                                       </table>
+                                    </div>
+                                 </div>   
+                              </div>      
+                           </div>      
+                           <textarea placeholder="Interpretation" style="width: 500px; margin-left: 0px; height: 80px; resize: none; border-radius: 4px; padding:8px;"></textarea>
+                  
+                           <!-- Bottom Buttons -->
+                           <div style="margin-left: 0px; margin-top: 20px; width: 500px;">
+                              <button class="btn btn-lg btn-default" style="background-color: lightgray; color: white;">START PRE</button>
+                              <button style="margin-left: 10px;" class="btn btn-lg btn-primary">START POST</button>
+                              <button style="margin-left: 116px;" class="btn btn-primary">
+                                 <img src="images/printer.png">
+                              </button>
+                              <button id="saveButton" onclick="dispatchCustom()" style="margin-left: 20px;" class="btn btn-lg btn-primary">SAVE</button>
+                           </div>         
+                        </div>   
+                     </div>
+                     <div class="tab-pane fade" id="trendTab">
+                        <!-- <p>iOS is a mobile operating system developed and distributed 
+                           by Apple Inc. Originally released in 2007 for the iPhone, iPod Touch,
+                           and Apple TV. iOS is derived from OS X, with which it shares the 
+                           Darwin foundation. iOS is Apple's mobile version of the OS X 
+                           operating system used on Apple computers.
+                        </p> -->
+                     </div>   
+                  </div>      
+      
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src = "https://code.jquery.com/jquery.js"></script>
+      
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src = "js/bootstrap.min.js"></script>
+      <script>         
+         $('.exPre').on('click', function() {
+            // reset all
+            $('.exPre').css('background-color', 'lightgray');
+
+            console.log($(this).css('background-color'));
+
+            // set this one
+            $(this).css('background-color', '#449d44');
+            $(this).blur();
+
+            // if ($(this).css('background-color') == 'rgb(0, 128, 0)') {
+            //    $(this).css('background-color', 'red');
+            // }
+            // else
+         });
+
+         $('.inPre').on('click', function() {
+            // reset all
+            $('.inPre').css('background-color', 'lightgray');
+            // set this one
+            $(this).css('background-color', '#449d44');
+            $(this).blur();
+         });
+
+         $('.exPost').on('click', function() {
+            // reset all
+            $('.exPost').css('background-color', 'lightgray');
+            // set this one
+            $(this).css('background-color', 'purple');
+            $(this).blur();
+         });
+         
+         $('.inPost').on('click', function() {
+            // reset all
+            $('.inPost').css('background-color', 'lightgray');
+            // set this one
+            $(this).css('background-color', 'purple');
+            $(this).blur();
+         });
+
+         // $('#saveButton').on('click', function(){
+         //    //alert("CUSTOM EVENT!");
+         //    var event = new CustomEvent("customClose", {
+         //       detail: {
+         //          time: new Date()
+         //       },
+         //       bubbles: true,
+         //       cancelable: true
+         //    });
+         //    $('#saveButton').trigger("customClose");           
+         // });        
+                        
+         function dispatchCustom(){
+            //alert("CUSTOM EVENT!");
+            var event = new CustomEvent("customClose", {
+               detail: {
+                  time: new Date()
+               },
+               bubbles: true,
+               cancelable: true
+            });
+            var elem = document.getElementById('saveButton');
+            elem.dispatchEvent(event);    
+         }
+                  
+      </script>
+   </body>
+</html>
